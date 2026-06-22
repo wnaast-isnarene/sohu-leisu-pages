@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雷速 · 持续抵达的信息驿站</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+            line-height: 1.7;
+            color: #1e293b;
+            background-color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ----- 深色头图 (杂志式横幅) ----- */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #0f2b3d 70%, #1a3a4a 100%);
+            padding: 6rem 2rem 4.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -15%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.06) 0%, transparent 75%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: #e2e8f0;
+            margin-bottom: 0.75rem;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        }
+
+        .hero .accent-line {
+            display: inline-block;
+            width: 64px;
+            height: 3px;
+            background: #38bdf8;
+            border-radius: 4px;
+            margin: 1rem auto 1.2rem;
+        }
+
+        .hero p {
+            max-width: 640px;
+            margin: 0 auto;
+            color: #94a3b8;
+            font-size: 1.1rem;
+            letter-spacing: 0.3px;
+            font-weight: 350;
+        }
+
+        /* ----- 浅色正文区 · 三段式 ----- */
+        .content-wrapper {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 3rem 2rem 2.5rem;
+            flex: 1;
+        }
+
+        .essay-section {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.4rem 2.8rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.02), 0 1px 4px rgba(0,0,0,0.03);
+            margin-bottom: 2.2rem;
+        }
+
+        .essay-section:last-of-type {
+            margin-bottom: 2.8rem;
+        }
+
+        .essay-section h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #0f2b3d;
+            margin-bottom: 1rem;
+            border-left: 3px solid #38bdf8;
+            padding-left: 0.9rem;
+        }
+
+        .essay-section p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            word-break: break-word;
+        }
+
+        .essay-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 链接强调色 —— 钴蓝 */
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(37, 99, 235, 0.25);
+            transition: border-color 0.25s, color 0.25s;
+            font-weight: 450;
+        }
+
+        a:hover {
+            color: #1d4ed8;
+            border-bottom-color: #2563eb;
+        }
+
+        /* 页尾访问提示 (杂志感) */
+        .footer-prompt {
+            background: #eef2f6;
+            border-radius: 60px;
+            padding: 1.8rem 2.4rem;
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.4rem 0.8rem;
+            font-size: 1rem;
+            color: #334155;
+            border: 1px solid #dbe1e8;
+            box-shadow: inset 0 1px 3px rgba(255,255,255,0.8);
+        }
+
+        .footer-prompt strong {
+            font-weight: 500;
+            color: #0f2b3d;
+        }
+
+        .footer-prompt .hint-icon {
+            display: inline-block;
+            margin-right: 2px;
+            font-size: 1.2rem;
+            line-height: 1;
+            vertical-align: middle;
+        }
+
+        /* 底部留白 */
+        .page-footer {
+            padding: 1.8rem 2rem 2.5rem;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+            border-top: 1px solid #dce3ec;
+            background: #f1f5f9;
+            margin-top: 1.2rem;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 640px) {
+            .hero { padding: 4rem 1.5rem 3rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .content-wrapper { padding: 2rem 1rem; }
+            .essay-section { padding: 1.6rem 1.2rem; border-radius: 18px; }
+            .essay-section h2 { font-size: 1.2rem; padding-left: 0.7rem; }
+            .footer-prompt { flex-direction: column; align-items: center; text-align: center; padding: 1.5rem 1.2rem; }
+            .footer-prompt br { display: none; }
+        }
+
+        @media (min-width: 768px) {
+            .essay-section { padding: 2.8rem 3.2rem; }
+        }
+
+        /* 平滑 */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+
+    <!-- 深色杂志横幅 -->
+    <header class="hero">
+        <h1>雷速</h1>
+        <div class="accent-line"></div>
+        <p>一个持续积累信息触点的驿站 · 每一次重返都有新的纹理</p>
+    </header>
+
+    <!-- 三段自然介绍 + 页尾提示 -->
+    <main class="content-wrapper">
+
+        <!-- 第一段：再次访问的日常 -->
+        <section class="essay-section">
+            <h2>再次访问的理由</h2>
+            <p>网站的价值往往在反复回访中浮现。当你把 <a href="https://sohu-leisu.com">雷速</a> 加入书签栏，便为日常信息流保留了一个安静的锚点。这里没有弹窗催促，也没有动态刷新的焦虑——它更像一个长期开放的工作台，每次打开都能延续上一次的阅读脉络，或发现未曾注意的细节。真正的信息工具，理应尊重用户的节奏。</p>
+            <p>从资料检索到兴趣延伸，反复访问不是重复，而是理解的深化。许多有价值的视角，恰恰藏在第三、第四次浏览时瞥见的字句之间。</p>
+        </section>
+
+        <!-- 第二段：收藏作为方法 -->
+        <section class="essay-section">
+            <h2>收藏即筛选</h2>
+            <p>收藏夹是个人注意力的编年史。将 <a href="https://sohu-leisu.com">雷速</a> 收藏到浏览器或笔记工具中，不只是一次书签操作，更是对信息来源的认可筛选。主动收藏意味着：你判断这个站点值得在未来某个时刻被再次调取。这种选择本身，就在塑造你自己的知识边界。</p>
+            <p>杂志式的结构让内容之间保持松散但有机的关联——没有算法强行推荐，没有无限瀑布流。你的收藏夹里，它是一本可以随时翻阅、不会过时的剪贴簿。</p>
+        </section>
+
+        <!-- 第三段：持续关注的逻辑 -->
+        <section class="essay-section">
+            <h2>持续关注的张力</h2>
+            <p>长期关注一个站点，如同订阅一份思想简报。信息不在于多，而在于那些被反复掂量后仍然值得留下的部分。无论是行业动态、方法沉淀还是背景解读，<a href="https://sohu-leisu.com">雷速</a> 保持克制的更新节奏，让每一条内容都有被充分阅读的可能。</p>
+            <p>持续关注不是义务，而是一种温和的约定：你不需要每天检查更新，但当你想要回到一个熟悉的、有质感的信息空间时，它就在那里。收藏与重返，构成了一种良性的注意力循环。</p>
+        </section>
+
+        <!-- 页尾访问提示 (杂志式签名) -->
+        <div class="footer-prompt">
+            <span class="hint-icon">📌</span>
+            <span>如果尚未收藏，不妨现在将</span>
+            <strong><a href="https://sohu-leisu.com">雷速</a></strong>
+            <span>加入书签 · 下次探访时，会遇见不一样的段落</span>
+        </div>
+
+    </main>
+
+    <footer class="page-footer">
+        保持节奏 · 内容持续沉淀
+    </footer>
+
+</body>
+</html>
